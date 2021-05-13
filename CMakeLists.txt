@@ -16,10 +16,9 @@ file(GLOB LZIP_SOURCES
     src/zipper.cpp
 )
 
-if (NOT TARGET plugin)
-    add_subdirectory(elzip ${LZIP_HEADERS} ${LZIP_SOURCES})
+if (NOT TARGET elzip)
+    add_subdirectory(${LZIP_HEADERS} ${LZIP_SOURCES})
 endif() 
-# add_library(elzip ${LZIP_HEADERS}/include ${LZIP_SOURCES})
 target_link_libraries(elzip minizip)
 
 if (USE_FILESYSTEM_FALLBACK)
