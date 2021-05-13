@@ -1,4 +1,5 @@
 project(elzip)
+cmake_minimum_required(VERSION 3.17)
 
 add_subdirectory(extlibs/minizip)
 
@@ -16,9 +17,7 @@ file(GLOB LZIP_SOURCES
     src/zipper.cpp
 )
 
-if (NOT TARGET elzip)
-    add_subdirectory(${LZIP_HEADERS} ${LZIP_SOURCES})
-endif() 
+add_library(elzip $(LZIP_HEADERS) S(LZIP_SOURCES))
 target_link_libraries(elzip minizip)
 
 if (USE_FILESYSTEM_FALLBACK)
